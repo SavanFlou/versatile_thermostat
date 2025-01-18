@@ -14,7 +14,7 @@ If the AC mode is used, you can also configure temperatures when the equipment i
 
 **None** is always added to the list of modes, as it is a way to not use presets but instead set a **manual temperature**.
 
-The presets are configured directly from the _VTherm_ entities or the central configuration if you're using centralized control. Upon creating the _VTherm_, you will have different entities that will allow you to set the temperatures for each preset:
+The presets are configured directly from the VTherm entities or the central configuration if you're using centralized control. Upon creating the VTherm, you will have different entities that will allow you to set the temperatures for each preset:
 
 ![presets](images/config-preset-temp.png).
 
