@@ -4,10 +4,10 @@
       - [Self-regulation in Expert Mode](#self-regulation-in-expert-mode)
       - [Summary of the Self-regulation Algorithm](#summary-of-the-self-regulation-algorithm)
 
-You have the option to activate the self-regulation feature only for _VTherms_ of type `over_climate`.
+You have the option to activate the self-regulation feature only for VTherms of type `over_climate`.
 
 There are generally two cases:
-1. If your underlying device is a _TRV_ and the valve is directly controllable in Home Assistant (e.g., Sonoff TRVZB), this function will allow _VTherm_ to directly manipulate the valve opening to regulate the temperature. The opening is then calculated by a _TPI_-type algorithm (see [here](algorithms.md)).
+1. If your underlying device is a TRV and the valve is directly controllable in Home Assistant (e.g., Sonoff TRVZB), this function will allow VTherm to directly manipulate the valve opening to regulate the temperature. The opening is then calculated by a TPI-type algorithm (see [here](algorithms.md)).
 2. Otherwise, Versatile Thermostat will adjust the temperature setpoint given to the underlying climate to ensure the room temperature actually reaches the setpoint.
 
 ## Configuration
@@ -15,12 +15,12 @@ There are generally two cases:
 ### Self-regulation by direct valve control
 
 This type of self-regulation, named `Direct Valve Control`, requires:
-1. An entity of type `climate` that is included in the _VTherm_'s underlying devices.
-2. An entity of type `number` to control the valve opening rate of the _TRV_.
+1. An entity of type `climate` that is included in the VTherm's underlying devices.
+2. An entity of type `number` to control the valve opening rate of the TRV.
 3. An optional entity of type `number` for calibrating the internal temperature of the underlying device.
 4. An optional entity of type `number` to control the valve closure.
 
-When the chosen self-regulation is `Direct Valve Control` on an _VTherm_ `over_climate`, a new configuration page named `Valve Regulation Configuration` appears:
+When the chosen self-regulation is `Direct Valve Control` on an VTherm `over_climate`, a new configuration page named `Valve Regulation Configuration` appears:
 
 ![Configuration Menu](images/config-self-regulation-valve-1.png)
 
@@ -34,7 +34,7 @@ You need to provide:
 3. As many valve closure control entities as there are underlying devices, and in the same order. These parameters are optional; they must either all be provided or none.
 4. A list of minimum opening values ​​for the valve when it needs to be opened. This field is a list of integers. If the valve needs to be opened, it will be opened at a minimum of this opening value. This allows enough water to pass through when it needs to be opened.
 
-The opening rate calculation algorithm is based on the _TPI_ algorithm described [here](algorithms.md). This is the same algorithm used for _VTherms_ `over_switch` and `over_valve`.
+The opening rate calculation algorithm is based on the TPI algorithm described [here](algorithms.md). This is the same algorithm used for VTherms `over_switch` and `over_valve`.
 
 If a valve closure rate entity is configured, it will be set to 100 minus the opening rate to force the valve into a particular state.
 
@@ -54,7 +54,7 @@ Self-regulation is configured with:
    1. Light - for small self-regulation needs. In this mode, the maximum offset will be 1.5°C.
    2. Medium - for medium self-regulation needs. A maximum offset of 2°C is possible in this mode.
    3. Strong - for high self-regulation needs. The maximum offset is 3°C in this mode, and the self-regulation will react strongly to temperature changes.
-2. A self-regulation threshold: the value below which no new regulation will be applied. For example, if at time t the offset is 2°C, and at the next calculation, the offset is 2.4°C, the regulation will not be applied. It will only be applied when the difference between the two offsets is at least equal to this threshold.
+2. A self-regulation threshold: the value below which no new regulation will be applied. For example, if at time t the offset is 2 °C, and at the next calculation, the offset is 2.4 °C, the regulation will not be applied. It will only be applied when the difference between the two offsets is at least equal to this threshold.
 3. Minimum period between two self-regulations: this number, expressed in minutes, indicates the duration between two regulation changes.
 
 These three parameters allow you to adjust the regulation and avoid applying too many regulation changes. Some devices, like TRVs or boilers, don't like frequent setpoint changes.
@@ -142,7 +142,7 @@ versatile_thermostat:
         stabilization_threshold: 0.1
         accumulated_error_threshold: 80
 ```
-and of course, configure the auto-regulation mode of the VTherm to Expert mode. All _VTherms_ in **Expert** mode will use the same parameters, it is not possible to have different expert settings.
+and of course, configure the auto-regulation mode of the VTherm to Expert mode. All VTherms in **Expert** mode will use the same parameters, it is not possible to have different expert settings.
 
 To apply the changes, you must either **restart Home Assistant completely** or just the Versatile Thermostat integration (Developer Tools / YAML / Reload Configuration / Versatile Thermostat).
 
