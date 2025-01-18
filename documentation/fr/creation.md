@@ -37,7 +37,7 @@ Suivez ensuite les étapes de configuration en sélectionnant dans le menu l'opt
 
 ## Configuration centralisée
 Ce choix permet de configurer une fois pour tous les VTherms certains aspects qui peuvent être répétitifs comme :
-1. les paramètres des différents algorithmes (TPI, détection d'ouvertures, détection de mouvements, capteurs de puissance de votre habitation, la détection de présence). Tous ces paramètres sont transverses à tous les VTherms. Vous pouvez donc ne les saisir qu'une seule fois dans la `Configuration centralisée`. Cette configuration ne créé pas de VTherm à proprement parler. Elle permet juste de mettre en commun des paramètres qu'il serait fastidieux de resaisir pour chaque VTherm. Noter que vous pouvez surcharger les paramètres sur les VTherms pour les spécialisés au besoin,
+1. les paramètres des différents algorithmes (TPI, détection d'ouvertures, détection de mouvements, capteurs de puissance de votre habitation, la détection de présence). Tous ces paramètres sont transverses à tous les VTherms. Vous pouvez donc ne les saisir qu'une seule fois dans la `Configuration centralisée`. Cette configuration ne crée pas de VTherm à proprement parler. Elle permet juste de mettre en commun des paramètres qu'il serait fastidieux de resaisir pour chaque VTherm. Noter que vous pouvez surcharger les paramètres sur les VTherms pour les spécialisés au besoin,
 2. la configuration de la commande d'un chauffage central,
 3. certains paramètre avancés comme la mise en sécurité
 
