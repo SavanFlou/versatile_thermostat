@@ -23,19 +23,19 @@ To use this feature, you need to:
 The 'Slow' setting allows about 30 minutes between a stop and a restart,
 The 'Medium' setting sets the threshold to about 15 minutes, and the 'Fast' setting puts it at 7 minutes.
 
-Note that these are not absolute settings since the algorithm takes into account the slope of the room temperature curve to respond accordingly. It is still possible that a restart occurs shortly after a stop if the temperature drops significantly.
+⚠️Note that these are not absolute settings since the algorithm takes into account the slope of the room temperature curve to respond accordingly. It is still possible that a restart occurs shortly after a stop if the temperature drops significantly.
 
 ## Usage
 
-Once the function is configured, you will now have a new `switch` type entity that allows you to enable or disable auto-start/stop without modifying the configuration. This entity is available on the _VTherm_ device and is named `switch.<name>_enable_auto_start_stop`.
+Once the function is configured, you will now have a new `switch` type entity that allows you to enable or disable auto-start/stop without modifying the configuration. This entity is available on the VTherm and is named `switch.<name>_enable_auto_start_stop`.
 
 ![image](images/enable-auto-start-stop-entity.png)
 
 Check the box to allow auto-start and auto-stop, and leave it unchecked to disable the feature.
 
-Note: The auto-start/stop function will only turn a _VTherm_ back on if it was turned off by this function. This prevents unwanted or unexpected activations. Naturally, the off state is preserved even after a Home Assistant restart.
+Note: The auto-start/stop function will only turn a VTherm back on if it was turned off by this function. This prevents unwanted or unexpected activations. Naturally, the off state is preserved even after a Home Assistant restart.
 
 > ![Tip](images/tips.png) _*Notes*_
 > 1. The detection algorithm is described [here](algorithms.md#auto-startstop-algorithm).
-> 2. Some appliances (boilers, underfloor heating, _PAC_, etc.) may not like being started/stopped too frequently. If that's the case, it might be better to disable the function when you know the appliance will be used. For example, I disable this feature during the day when presence is detected because I know my _PAC_ will turn on often. I enable auto-start/stop at night or when no one is home, as the setpoint is lowered and it rarely triggers.
-> 3. If you use the Versatile Thermostat UI card (see [here](additions.md#better-with-the-versatile-thermostat-ui-card)), a checkbox is directly visible on the card to disable auto-start/stop, and a _VTherm_ stopped by auto-start/stop is indicated by the icon: ![auto-start/stop icon](images/auto-start-stop-icon.png).
+> 2. Some appliances (boilers, underfloor heating, _PAC_, etc.) may not like being started/stopped too frequently. If that's the case, it might be better to disable the function when you know the appliance will be used. For example, I disable this feature during the day when presence is detected because I know my PAC will turn on often. I enable auto-start/stop at night or when no one is home, as the setpoint is lowered and it rarely triggers.
+> 3. If you use the Versatile Thermostat UI card (see [here](additions.md#better-with-the-versatile-thermostat-ui-card)), a checkbox is directly visible on the card to disable auto-start/stop, and a VTherm stopped by auto-start/stop is indicated by the icon: ![auto-start/stop icon](images/auto-start-stop-icon.png).
