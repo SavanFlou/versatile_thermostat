@@ -41,12 +41,12 @@ Ce choix permet de configurer une fois pour tous les VTherms certains aspects qu
 2. la configuration de la commande d'un chauffage central,
 3. certains paramètre avancés comme la mise en sécurité
 
-## VTherm sur un switch
+## VTherm sur un switch (```over_switch```)
 Ce VTherm permet de contrôler un interrupteur qui allume ou étient un radiateur. Cet interrupteur peut être un interrupteur physique qui allume ou éteint directement un radiateur (souvent électrique) ou un interrupteur virtuel qui pourra effectuer les actions que vous voulez sur demande d'allumage ou extinction. Ce dernier type permet par exemple de commander des switchs avec fil pilote ou deu DIY avec diode pour fil pilote. VTherm va moduler la proportion de temps allumé vs éteint pour obtenir la température souhaitée. Si il fait froid, il allume plus souvent (jusqu'à 100%), si il fait chaud il baisse le pourcentage d'allumage. Ce pourcentage d'allumage en nommé `on_percent`.
 
 Les entités sous-jacentes sont donc des `switchs` ou des `input_boolean`.
 
-## Vtherm sur un autre thermostat
+## Vtherm sur un autre thermostat (```over_climate```)
 Lorsque votre équipement est contrôlé par une entité de type `climate` dans Home Assistant et que vous n'avez que ça à disposition, vous devez utiliser ce type de VTherm. Dans ce cas, le VTherm va simplement commander la température de consigne du `climate` sous-jacent.
 Ce type est aussi équipé de fonction d' auto-régulations avancées permettant de moduler la consigne donnée aux sous-jacent pour atteindre plus vite la consigne et de s'affranchir de la régulation interne de ces équipements qui est parfois mauvaise. C'est le cas, si le thermomètre interne de l'équipement est trop proche du corps de chauffe. L'équipement peut croire qu'il fait chaud alors qu'au bout de la pièce, la consigne n'est pas du tout atteinte.
 
@@ -54,7 +54,7 @@ Depuis la version 6.8, ce type de VTherm permet aussi de réguler avec une actio
 
 Les entités sous-jacentes de ce type de VTherm sont donc des `climate` exclusivement.
 
-## VTherm sur une vanne
+## VTherm sur une vanne (```over_valve```)
 Lorsque tout ce que vous avez à disposition pour réguler la température de votre radiateur est une entité de type `number` vous devez utiliser le type `over_valve`. VTherm ouvre ou ferme la vanne en fonction de l'écart entre la consigne et la température réelle de la pièce (et de la température extérieure).
 
 Ce type peut être utilisé pour les _TRV_ qui n'ont pas de `climate` associé ou tout autre solution type DIY qui expose une entité `number`.
@@ -62,11 +62,14 @@ Ce type peut être utilisé pour les _TRV_ qui n'ont pas de `climate` associé o
 # Le bon choix
 > ![Astuce](images/tips.png) _*Comment choisir le type*_
 > Le choix du type est important. Il n'est plus possible de le modifier via l'IHM de configuration. Pour bien chsoisir, il faut se poser les quelques questions suivantes :
+> 
 > 1. **quel type d'équipement je vais piloter ?** Dans l'ordre voici ce qu'il faut faire :
 >    1. si vous avez une vanne thermostatique (_TRV_) commandable dans Home Assistant via une entité de type ```number``` (par exemple une _Shelly TRV_), choisissez le type `over_valve`. C'est le type le plus direct et qui assure la meilleure régulation,
 >    2. si vous avez un radiateur électrique (avec ou sans fil pilote) et qu'une entité de type ```switch``` permet de l'allumer ou de l'éteindre, alors le type ```over_switch``` est préférable. La régulation sera faite par le Versatile Thermostat en fonction de la température mesuré par votre thermomètre, à l'endroit ou vous l'avez placé,
 >    3. dans tous les autres cas, utilisez le mode ```over_climate```. Vous gardez votre entité ```climate``` d'origine et le VTherm "ne fait que" piloter le on/off et la température cible de votre thermostat d'origine. La régulation est faite par votre thermostat d'origine dans ce cas. Ce mode est particulièrement adapté aux climatisations réversible tout-en-un dont l'exposition dans Home Assistant se limite à une entité de type ```climate```. Une auto-régulation avancée permet d'atteindre la consigne en forçant la consigne ou un pilotant directement la vanne lorsque c'est possible.
-> 2. **quelle type de régulation je veux ?** Si l'équipement piloté possède son propre mécanisme de régulation (clim, certaine vanne TRV) et que cette régulation fonctionne bien, optez pour un ```over_climate```. Si l'équipement est de type _TRV_ avec une vanne pilotable sous HA, alors le type `over_climate` avec une auto-régulation `Contrôle direct de la vanne` est le meilleur choix.
+> 2. **quelle type de régulation je veux ?**
+>    1. Si l'équipement piloté possède son propre mécanisme de régulation (clim, certaines vannes TRV) et que cette régulation fonctionne bien, optez pour un ```over_climate```.
+>    2. Si l'équipement est de type _TRV_ avec une vanne pilotable sous HA, alors le type `over_climate` avec une auto-régulation `Contrôle direct de la vanne` est le meilleur choix.
 
 # Article en référence
 Un article permettant d'aller plus loin sur les concepts est visible ici (en Français) : https://www.hacf.fr/optimisation-versatile-thermostat/#optimiser-vos-vtherm
