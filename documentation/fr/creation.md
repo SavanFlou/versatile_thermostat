@@ -1,4 +1,4 @@
-# Choix du type de Versatil Thermostat
+# Choix du type de Versatil Thermostat (VTherm)
 
 - [Choix du VTherm](#choix-du-vtherm)
   - [Création d'un nouveau VTherm](#création-dun-nouveau-versatile-thermostat)
