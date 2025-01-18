@@ -4,7 +4,7 @@
   - [Sensor Mode](#sensor-mode)
   - [Auto Mode](#auto-mode)
 
-You must have selected the `With Open Detection` feature on the first page to reach this page.
+You must have selected the `With Open Detection` feature in the ``Functions`` menu to be able to access this menu.
 Open detection can be done in two ways:
 1. By using a sensor placed on the opening (sensor mode),
 2. By detecting a sudden temperature drop (auto mode)
@@ -17,17 +17,17 @@ In this mode, you need to fill in the following information:
 
 1. A **delay in seconds** before any change. This allows you to open a window quickly without stopping the heating.
 2. The action to take when the opening is detected as open. The possible actions are:
-   1. _Turn off_: the _VTherm_ will be turned off.
+   1. _Turn off_: the VTherm will be turned off.
    2. _Fan only_: heating or cooling will be turned off, but the equipment will continue to ventilate (for compatible equipment).
-   3. _Frost protection_: the "Frost Protection" preset temperature will be selected on the _VTherm_ without changing the current preset (see notes below).
-   4. _Eco_: the "Eco" preset temperature will be applied to the _VTherm_ without changing the current preset (see notes below).
+   3. _Frost protection_: the "Frost Protection" preset temperature will be selected on the VTherm without changing the current preset (see notes below).
+   4. _Eco_: the "Eco" preset temperature will be applied to the VTherm without changing the current preset (see notes below).
 
 When the detector switches to open:
-1. _VTherm_ waits for the specified delay.
-2. If the window is still open after the delay, the _VTherm_ state (Heating / Cooling / ..., current preset, current target temperature) is saved and the action is performed.
+1. the VTherm waits for the specified delay.
+2. If the window is still open after the delay, the VTherm state (Heating / Cooling /…, current preset, current target temperature) is saved and the action is performed.
 
 Similarly, when the detector switches to closed:
-1. _VTherm_ waits for the specified delay.
+1. the VTherm waits for the specified delay.
 2. If the window is still closed after the delay, the state before the window opening is restored.
 
 ## Auto Mode
@@ -41,12 +41,12 @@ In auto mode, the configuration is as follows:
 4. A maximum detection duration. Beyond this duration, the thermostat will return to its previous mode and preset even if the temperature continues to drop.
 5. The action to take when the opening is detected as open. The actions are the same as in sensor mode described above.
 
-To adjust the thresholds, it is recommended to start with the reference values and adjust the detection thresholds. Some tests gave me the following values (for an office):
-- Detection threshold: 3°C/hour
-- No detection threshold: 0°C/hour
+To adjust the thresholds, it is recommended to start with the reference values and then adjust them. Some tests gave me the following values (for an office):
+- Detection threshold: 3 °C/hour
+- No detection threshold: 0 °C/hour
 - Max duration: 30 min.
 
-A new sensor called "slope" has been added for all thermostats. It provides the slope of the temperature curve in °C/hour (or °K/hour). This slope is smoothed and filtered to avoid aberrant thermometer values that could interfere with the measurement.
+A new sensor called ``slope`` has been added for all thermostats. It provides the slope of the temperature curve in °C/hour (or °K/hour). This slope is smoothed and filtered to avoid aberrant thermometer values that could interfere with the measurement.
 
 ![image](images/temperature-slope.png)
 
