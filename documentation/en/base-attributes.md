@@ -5,6 +5,12 @@
 
 Select the "Main Attributes" menu.
 
+
+> ![Tip](images/tips.png) _*Notes*_
+> 1. The list of available functions adapts to your VTherm type.
+> 2. When you enable a function, a new menu entry is added to configure it.
+> 3. You cannot validate the creation of a VTherm if all parameters for all enabled functions have not been configured.
+
 ![image](images/config-main.png)
 
 Provide the mandatory main attributes. These attributes are common to all VTherms:
@@ -36,10 +42,5 @@ Choose the features you want to use for this VTherm:
 1. **Opening detection** (doors, windows) stops heating when an opening is detected. (see [managing openings](feature-window.md)),
 2. **Motion detection**: VTherm can adjust the target temperature when motion is detected in the room. (see [motion detection](feature-motion.md)),
 3. **Power management**: VTherm can stop a device if the power consumption in your home exceeds a threshold. (see [load-shedding management](feature-power.md)),
-4. **Presence detection**: If you have a sensor indicating presence or absence in your home, you can use it to change the target temperature. See [presence management](feature-presence.md). Note the difference between this function and motion detection: presence is typically used at the home level, while motion detection is more room-specific.
+4. **Presence detection**: If you have a sensor indicating presence or absence in your home, you can use it to change the target temperature. See [presence management](feature-presence.md). ⚠️ Note the difference between this function and motion detection: presence is typically used at the home level, while motion detection is more room-specific.
 5. **Automatic start/stop**: For `over_climate` VTherms only. This function stops a device when VTherm detects it will not be needed for a while. It uses the temperature curve to predict when the device will be needed again and turns it back on at that time. See [automatic start/stop management](feature-auto-start-stop.md).
-
-> ![Tip](images/tips.png) _*Notes*_
-> 1. The list of available functions adapts to your VTherm type.
-> 2. When you enable a function, a new menu entry is added to configure it.
-> 3. You cannot validate the creation of a VTherm if all parameters for all enabled functions have not been configured.
