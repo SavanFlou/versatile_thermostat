@@ -1,4 +1,4 @@
-# `thermostat_over_valve` Type Thermostat
+# `thermostat_over_valve` VTherm Type 
 
 > ![Attention](images/tips.png) _*Notes*_
 > 1. The `over_valve` type is often confused with the `over_climate` type equipped with auto-regulation and direct valve control.
@@ -12,7 +12,7 @@ The installation should be similar to the `over_switch` VTherm setup, except tha
 
 1. The user or automation, or the Scheduler, sets a setpoint via a preset or directly using a temperature.
 2. Periodically, the internal thermometer (2) or external thermometer (2b) or internal thermometer of the equipment (2c) sends the measured temperature. The internal thermometer should be placed in a relevant spot for the user's comfort: ideally in the middle of the living space. Avoid placing it too close to a window or too near the equipment.
-3. Based on the setpoint values, the different temperatures, and the TPI algorithm parameters (see [TPI](algorithms.md#lalgorithme-tpi)), VTherm will calculate the valve's opening percentage.
+3. Based on the setpoint values, the different temperatures, and the TPI algorithm parameters (see [TPI](algorithms.md#lalgorithme-tpi)), the VTherm will calculate the valve's opening percentage.
 4. It will then modify the value of the underlying `number` entities.
 5. These underlying `number` entities will control the valve opening rate on the _TRV_.
 6. This will regulate the radiator's heating.
@@ -21,8 +21,8 @@ The installation should be similar to the `over_switch` VTherm setup, except tha
 
 ## Configuration
 
-First, configure the main settings common to all _VTherms_ (see [main settings](base-attributes.md)).
-Then, click on the "Underlying Entities" option from the menu, and you will see this configuration page, you should add the `number` entities that will be controlled by VTherm. Only `number` or `input_number` entities are accepted.
+First, configure the main settings common to all VTherms (see [main settings](base-attributes.md)).
+Then, click on the "Underlying Entities" option from the menu, and you will see this configuration page, you should add the `number` entities that will be controlled by the VTherm. Only `number` or `input_number` entities are accepted.
 
 ![image](images/config-linked-entity3.png)
 
