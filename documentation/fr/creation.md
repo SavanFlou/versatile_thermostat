@@ -1,6 +1,6 @@
-# Choix du Vtherm
+# Choix du type de Versatil Thermostat
 
-- [Choix du Versatil Thermostat (VTherm)](#choix-du-vtherm)
+- [Choix du VTherm](#choix-du-vtherm)
   - [Création d'un nouveau VTherm](#création-dun-nouveau-versatile-thermostat)
 - [Choix d'un type de VTherm](#choix-dun-type-de-vtherm)
   - [Configuration centralisée](#configuration-centralisée)
