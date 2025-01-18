@@ -41,7 +41,7 @@ La documentation est maintenant découpée en plusieurs pages pour faciliter la 
 1. [présentation](documentation/fr/presentation.md),
 2. [Installation](documentation/fr/installation.md),
 3. [choisir un type de VTherm](documentation/fr/creation.md),
-4. [les attributs de base](documentation/fr/base-attributes.md)
+4. [Principaux attributs](documentation/fr/base-attributes.md)
 5. [configurer un VTherm sur un `switch`](documentation/fr/over-switch.md)
 6. [configurer un VTherm sur un `climate`](documentation/fr/over-climate.md)
 7. [configurer un VTherm sur une vanne](documentation/fr/over-valve.md)
@@ -51,7 +51,7 @@ La documentation est maintenant découpée en plusieurs pages pour faciliter la 
 11. [la gestion de mouvement](documentation/fr/feature-motion.md)
 12. [la gestion de la puissance](documentation/fr/feature-power.md)
 13. [l'auto start and stop](documentation/fr/feature-auto-start-stop.md)
-14. [la contrôle centralisé de tous vos VTherms](documentation/fr/feature-central-mode.md)
+14. [le contrôle centralisé de tous vos VTherms](documentation/fr/feature-central-mode.md)
 15. [la commande du chauffage central](documentation/fr/feature-central-boiler.md)
 16. [aspects avancés, mode sécurité](documentation/fr/feature-advanced.md)
 17. [l'auto-régulation](documentation/fr/self-regulation.md)
