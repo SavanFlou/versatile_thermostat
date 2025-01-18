@@ -1,13 +1,13 @@
-# Le contrôle d'une chaudière centrale# Controlling a Central Boiler
+# Controlling a Central Boiler
 
-- [Le contrôle d'une chaudière centrale# Controlling a Central Boiler](#le-contrôle-dune-chaudière-centrale-controlling-a-central-boiler)
+- [Controlling a Central Boiler](#controlling-a-central-boiler)
   - [Principle](#principle)
   - [Configuration](#configuration)
     - [How to Find the Right Action?](#how-to-find-the-right-action)
   - [Events](#events)
   - [Warning](#warning)
 
-You can control a centralized boiler. As long as it's possible to trigger or stop the boiler from Home Assistant, Versatile Thermostat will be able to control it directly.
+You can control a central boiler. As long as it's possible to trigger or stop the boiler from Home Assistant, Versatile Thermostat will be able to control it directly.
 
 ## Principle
 The basic principle is as follows:
@@ -62,7 +62,7 @@ In YAML mode:
 
 ![Service Configuration](images/dev-tools-turnon-boiler-2.png)
 
-The service to configure will then be: `climate.sonoff/climate.set_hvac_mode/hvac_mode:heat` (note the removal of spaces in `hvac_mode:heat`).
+The service to configure will then be: `climate.sonoff/climate.set_hvac_mode/hvac_mode:heat` (please, note the removal of spaces in `hvac_mode:heat`).
 
 Do the same for the off service, and you’re ready to go.
 
@@ -100,7 +100,7 @@ context:
   user_id: null
 ```
 
-Un évènement d'extinction :
+An extinction event:
 ```yaml
 event_type: versatile_thermostat_central_boiler_event
 data:
