@@ -53,7 +53,7 @@ La documentation est maintenant découpée en plusieurs pages pour faciliter la 
 13. [l'auto start and stop](documentation/fr/feature-auto-start-stop.md)
 14. [le contrôle centralisé de tous vos VTherms](documentation/fr/feature-central-mode.md)
 15. [la commande du chauffage central](documentation/fr/feature-central-boiler.md)
-16. [aspects avancés, mode sécurité](documentation/fr/feature-advanced.md)
+16. [Paramètres avancés, mode sécurité](documentation/fr/feature-advanced.md)
 17. [l'auto-régulation](documentation/fr/self-regulation.md)
 18. [exemples de réglages](documentation/fr/tuning-examples.md)
 19. [les différents algorithmes](documentation/fr/algorithms.md)
