@@ -1,6 +1,6 @@
-# Thermostat de type `over_climate`
+# VTherm de type `over_climate`
 
-- [Thermostat de type `over_climate`](#thermostat-de-type-over_climate)
+- [VTherm de type `over_climate`](#thermostat-de-type-over_climate)
   - [Pré-requis](#pré-requis)
   - [Configuration](#configuration)
     - [les sous-jacents](#les-sous-jacents)
@@ -17,10 +17,10 @@ L'installation doit ressembler à ça :
 
 ![installation `over_climate`](images/over-climate-schema.png)
 
-1. L'utilisateur ou une automatisation ou le Sheduler programme une consigne (setpoint) par le biais d'un pre-réglage ou directement d'une température,
-2. régulièrement le thermomètre intérieur (2) ou extérieur (2b) ou interne à l'équipement (2c) envoie la température mesurée. Le thermomètre intérieur doit être placé à une place pertinente pour le ressenti de l'utilisateur : idéalement au milieu du lieu de vie. Evitez de le mettre trop près d'une fenêtre ou trop proche de l'équipement,
-3. avec les valeurs de consigne, des différents et les paramètres de l'auto-régulation (cf. [auto-regulation](self-regulation.md)), VTherm va calculer une consigne qui sera envoyée à l'entité `climate` sous-jacentes,
-4. l'entité `climate` sous-jacente contrôle l'équipement avec son propre protocole,
+1. L'utilisateur, ou une automatisation ou le Sheduler, programme une consigne (setpoint) par le biais d'un pre-réglage ou directement d'une température.
+2. régulièrement, le thermomètre intérieur (2) ou extérieur (2b), ou interne à l'équipement (2c), envoie la température mesurée. Le thermomètre intérieur doit être placé à une place pertinente pour le ressenti de l'utilisateur : idéalement au milieu du lieu de vie. Évitez de le mettre trop près d'une fenêtre ou trop proche de l'équipement.
+3. avec les valeurs de consigne, des différents et les paramètres de l'auto-régulation (cf. [auto-regulation](self-regulation.md)), le VTherm va calculer une consigne qui sera envoyée à l'entité `climate` sous-jacentes,
+4. l'entité `climate` sous-jacente contrôle l'équipement avec son propre protocole.
 5. selon les options de régulation choisie le VTherm pourra potentiellement contrôler directement l'ouverture d'une vanne thermostatique ou calibrer l'équipement pour que sa température interne soit le reflet de la température de la pièce.
 
 
@@ -32,7 +32,7 @@ Cliquez ensuite sur l'option de menu "Sous-jacents" et vous allez avoir cette pa
 ![image](images/config-linked-entity2.png)
 
 ### les sous-jacents
-Dans la "liste des équipements à contrôler" vous mettez les entités `climate` qui vont être controllés par le VTherm. Seuls les entités de type `climate` sont acceptées.
+Dans la "liste des équipements à contrôler", vous mettez les entités `climate` qui vont être contrôlées par le VTherm. Seuls les entités de type `climate` sont acceptées.
 
 ### Le mode AC
 
@@ -40,25 +40,25 @@ Il est possible de choisir un thermostat `over_climate` qui commande une climati
 
 ### L'auto-régulation
 
-En mode `over_climate`, le device utilise son propre algorithme de régulation : il s'allume / s'éteint et se met en pause tout seul en fonction de la consigne transmise par le VTherm à travers son entité `climate`. Il utilise pour ça son thermomètre interne et la consigne reçue.
+En mode `over_climate`, l'appareil utilise son propre algorithme de régulation : il s'allume / s'éteint et se met en pause tout seul en fonction de la consigne transmise par le VTherm à travers son entité `climate`. Il utilise pour ça son thermomètre interne et la consigne reçue.
 
-Selon l'équipement cette régulation interne peut être plus ou moins bonne. Ca dépend beaucoup de la qualité de l'équipement, du fonctionnement de son thermomètre interne et de son algorithme interne. Pour améliorer les équipements qui régule mal, VTherm propose de tricher un peu sur la consigne qui lui est envoyée en augmentant ou diminuant celle-ci en fonction cette fois de la température de la pièce mesurée par VTherm et non plus de la température interne.
+Selon l'équipement, cette régulation interne peut être plus ou moins bonne. Cela dépend beaucoup de la qualité de l'équipement, du fonctionnement de son thermomètre interne et de son algorithme interne. Pour améliorer les équipements qui régulent mal, Versatil Thermostat propose de tricher un peu sur la consigne qui leur est envoyé en augmentant ou diminuant celle-ci en fonction cette fois de la température de la pièce mesurée par le VTherm, et non plus de la température interne.
 
-Les choix d'auto-régulation sont décrits dans le détail [ici](self-regulation.md).
+Les choix d'auto-régulation sont décrits dans le document suivant [ici](self-regulation.md).
 
-Afin d'éviter de trop solliciter l'équipement sous-jacent (certain font un bip désagréable, d'autres sont sur batterie, ...), deux seuils permettant de limiter le nombre de sollicitation sont proposés :
-1. le seuil de régulation : un seuil en ° en dessous duquel la nouvelle consigne ne sera pas envoyée. Si la dernière consigne était de 22°, alors la prochaine envoyée, sera de 22° +/- seuil de régulation,
-2. la période minimale de régulation en minute : un interval de temps minimal en minute en dessous duquel la nouvelle consigne ne sera pas envoyée. Si la dernière consigne a été envoyée à 11h00, alors la prochaine ne pourra pas être envoyée avant 11h00 + periode minimal de régulation.
+Afin d'éviter de trop solliciter l'équipement sous-jacent (certains font un bip désagréable, d'autres sont sur batterie,…), deux seuils permettant de limiter le nombre de sollicitations sont proposés :
+1. le seuil de régulation : un seuil en °C ou °F en dessous duquel la nouvelle consigne ne sera pas envoyée. Si la dernière consigne était de 22 °C, alors la prochaine envoyée, sera de 22 °C +/- seuil de régulation.
+2. la période minimale de régulation en minute : un intervalle de temps minimal en minute en dessous duquel la nouvelle consigne ne sera pas envoyée. Par exemple, si la dernière consigne a été envoyée à 11h00, alors la prochaine ne pourra pas être envoyée avant 11h00 + periode minimale de régulation.
 
-Si ils sont mal réglés, ces seuils peuvent empêcher une auto-régulation correcte puisque les nouvelles consignes ne seront pas envoyées.
+S'ils sont mal réglés, ces seuils peuvent empêcher une auto-régulation correcte puisque les nouvelles consignes ne seront pas envoyées.
 
 ### L'auto-ventilation (auto-fan)
 
-Ce mode introduit en 4.3 permet de forcer l'usage de la ventilation si l'écart de température est important. En effet, en activant la ventilation, la répartition se fait plus rapidement ce qui permet de gagner du temps dans l'atteinte de la température cible.
+Ce mode introduit en version 4.3 permet de forcer l'usage de la ventilation si l'écart de température est important. En effet, en activant la ventilation, la répartition se fait plus rapidement ce qui permet de gagner du temps dans l'atteinte de la température cible.
 Vous pouvez choisir quelle ventilation vous voulez activer entre les paramètres suivants : Faible, Moyenne, Forte, Turbo.
 
-Il faut évidemment que votre équipement sous-jacent soit équipée d'une ventilation et quelle soit pilotable pour que cela fonctionne.
-Si votre équipement ne comprend pas le mode Turbo, le mode Forte` sera utilisé en remplacement.
+Il faut évidemment que votre équipement sous-jacent soit équipé d'une ventilation et quelle soit pilotable pour que cela fonctionne.
+Si votre équipement ne comprend pas le mode Turbo, le mode `Forte` sera utilisé en remplacement.
 Une fois l'écart de température redevenu faible, la ventilation se mettra dans un mode "normal" qui dépend de votre équipement à savoir (dans l'ordre) : `Silence (mute)`, `Auto (auto)`, `Faible (low)`. La première valeur qui est possible pour votre équipement sera choisie.
 
 ### Compenser la température interne du sous-jacent
@@ -66,16 +66,16 @@ Une fois l'écart de température redevenu faible, la ventilation se mettra dans
 Quelque fois, il arrive que le thermomètre interne du sous-jacent (TRV, climatisation, ...) soit tellement faux que l' auto-régulation ne suffise pas à réguler.
 Cela arrive lorsque le thermomètre interne est trop près de la source de chaleur. La température interne monte alors beaucoup plus vite que la température de la pièce, ce qui génère des défauts dans la régulation.
 Exemple :
-1. la température de la pièce est 18°, la consigne est à 20°,
-2. la température interne de l'équipement est de 22°,
-3. si VTherm envoie 21° comme consigne (= 20° + 1° d'auto-regulation), alors l'équipement ne chauffera pas car sa température interne (22°) est au-dessus de la consigne (21°)
+1. la température de la pièce est 18 °C, la consigne est à 20 °C,
+2. la température interne de l'équipement est de 22 °C,
+3. si le VTherm envoie 21° comme consigne (= 20 °C + 1 °C d'auto-regulation), alors l'équipement ne chauffera pas car sa température interne (22 °C) est au-dessus de la consigne (21 °C)
 
 Pour palier à ça, une nouvelle option facultative a été ajoutée en version 5.4 : ![Utilisation de la température interne](images/config-use-internal-temp.png)
 
 Lorsqu'elle est activée, cette fonction ajoutera l'écart entre la température interne et la température de la pièce à la consigne pour forcer le chauffage.
-Dans l'exemple ci-dessus, l'écart est de +4° (22° - 18°), donc VTherm enverra 25° (21°+4°) à l'équipement le forçant ainsi à chauffer.
+Dans l'exemple ci-dessus, l'écart est de +4 °C (22 °C - 18 °C), donc le VTherm enverra 25 °C (21 °C + 4 °C) à l'équipement le forçant ainsi à chauffer.
 
-Cet écart est calculé pour chaque sous-jacent car chacun à sa propre température interne. Pensez à un VTherm qui serait relié à 3 TRV chacun avec sa température interne par exemple.
+Cet écart est calculé pour chaque sous-jacent car chacun a sa propre température interne. Pensez à un VTherm qui serait relié à 3 TRV, chacun avec sa température interne par exemple.
 
 On obtient alors une auto-régulation bien plus efficace qui évite l'eccueil des gros écarts de température interne défaillante.
 
@@ -87,20 +87,20 @@ Vous trouverez des conseils pour régler au mieux ces paramètres dans la page [
 
 Les fonctions spécifiques sont paramétrables avec une option dédiée du menu.
 
-Les fonctions spécifiques qui nécessite un paramétrage à ce type de VTherm sont :
+Les fonctions spécifiques qui nécessite un paramétrage pour ce type de VTherm sont :
 1. l'auto-start/stop : arrêt et démarrage automatique du VTherm selon la prévision d'usage. Elle est décrite ici fonction [auto-start/sop](feature-auto-start-stop.md),
 2. si la régulation par vanne est choisie, le paramétrage de l'algo TPI est accessible depuis le menu. cf ([algorithmes](algorithms.md))
 
 ## Suivre les changements de température du sous-jacent
 
-Certains utilisateurs veulent continuer à utiliser leur équipement comme avant (sans _VTherm_). Par exemple vous pouvez vouloir utiliser la télécommande de votre _PAC_ ou tourner le bouton de votre _TRV_.
+Certains utilisateurs veulent continuer à utiliser leur équipement comme avant (sans _VTherm_). Par exemple, vous pouvez vouloir utiliser la télécommande de votre _PAC_ ou tourner le bouton de votre _TRV_.
 Si vous êtes dans ce cas, une entité a été ajoutée dans l'appareil _VTherm_ nommée `Follow underlying temp changes` :
 
 ![Suivre les changements de température](images/entity-follow-under-temp-change.png)
 
-Lorsque cette entité est 'On', tous les changements de température ou d'état faits directement sur l'équipement sous-jacents sont répercutés sur le _VTherm_.
+Lorsque cette entité est 'On', tous les changements de température ou d'état faits directement sur l'équipement sous-jacents sont répercutés sur le VTherm.
 
-Attention, si vous utilisez cette fonction, votre équipement est maintenant contrôlé par 2 moyens : _VTherm_ et par vous même directement. Les ordres peuvent être contradictoires et cela peut induire une incompréhension sur l'état de l'équipement. _VTherm_ est équipé d'un mécanisme de temporisation qui évite les boucles : l'utilisateur donne une consigne qui est captée par _VTherm_ qui change la consigne, ... Cette temporisation peut faire que le changement fait directement sur l'équipement est ignoré si ces changements sont trop rapprochés dans le temps.
+Attention, si vous utilisez cette fonction, votre équipement est maintenant contrôlé par 2 moyens : les réglages du VTherm et par vous-même directement. Les ordres peuvent être contradictoires et cela peut induire une incompréhension sur l'état de l'équipement. Versatil Thermostat est équipé d'un mécanisme de temporisation qui évite les boucles : l'utilisateur donne une consigne qui est captée par le VTherm qui change la consigne… Cette temporisation peut faire que le changement fait directement sur l'équipement soit ignoré si ces changements sont trop rapprochés dans le temps.
 
-Certains équipements (Daikin par exemple), changent d'état tout seul. Si la case est cochée, cela peut éteindre le _VTherm_ alors que ce n'est pas ce que vous souhaitiez.
+Certains équipements (les Daikin par exemple), changent d'état tout seul. Si la case est cochée, cela peut éteindre le VTherm alors que ce n'est pas ce que vous souhaitiez.
 C'est pour ça qu'il est préférable de ne pas l'utiliser. Cela génère beaucoup d'incompréhensions et de nombreuses demandes de support.
