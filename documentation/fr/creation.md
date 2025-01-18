@@ -1,7 +1,7 @@
 # Choix du Vtherm
 
-- [Choix du Vtherm](#choix-du-vtherm)
-  - [Création d'un nouveau Versatile Thermostat](#création-dun-nouveau-versatile-thermostat)
+- [Choix du Vesatil Thermostat (VTherm)](#choix-du-vtherm)
+  - [Création d'un nouveau VTherm](#création-dun-nouveau-versatile-thermostat)
 - [Choix d'un type de VTherm](#choix-dun-type-de-vtherm)
   - [Configuration centralisée](#configuration-centralisée)
   - [VTherm sur un switch](#vtherm-sur-un-switch)
@@ -14,12 +14,12 @@
 > ![Astuce](images/tips.png) _*Notes*_
 >
 > Trois façons de travailler avec les VTherms sont disponibles :
-> 1. Chaque Versatile Thermostat est entièrement configurée de manière indépendante. Choisissez cette option si vous ne souhaitez avoir aucune configuration ou gestion centrale.
+> 1. Chaque VTherm est entièrement configurée de manière indépendante. Choisissez cette option si vous ne souhaitez avoir aucune configuration ou gestion centrale.
 > 2. Certains aspects peuvent être configurés de manière centralisée. Cela permet par ex. définir la température min/max, les paramètres de détection de fenêtre ouverte,… au niveau d'une instance centrale et unique. Pour chaque VTherm que vous configurez, vous pouvez alors choisir d'utiliser la configuration centrale ou de la remplacer par des paramètres personnalisés.
 > 3. En plus de cette configuration centralisée, tous les VTherm peuvent être contrôlées par une seule entité de type `select`. Cette fonction est nommé `central_mode`. Cela permet de stopper / démarrer / mettre en hors gel / etc tous les VTherms en une seule fois. Pour chaque VTherm, l'utilisateur indique si il est concerné par ce `central_mode`.
 
 
-## Création d'un nouveau Versatile Thermostat
+## Création d'un nouveau VTherm
 
 Cliquez sur le bouton Ajouter une intégration dans la page d'intégration (ou cliquez directement sur 'Ajouter un appareil' depuis la page de configuration de l'intégration)
 
@@ -29,7 +29,7 @@ puis
 
 ![image](images/config-main0.png)
 
-La configuration peut être modifiée via la même interface. Sélectionnez simplement le thermostat à modifier, appuyez sur "Configurer" et vous pourrez modifier certains paramètres ou la configuration.
+La configuration peut être modifiée via la même interface. Sélectionnez simplement le VTherm à modifier, appuyez sur "Configurer" et vous pourrez modifier certains paramètres ou la configuration.
 
 Suivez ensuite les étapes de configuration en sélectionnant dans le menu l'option à configurer.
 
@@ -65,7 +65,7 @@ Ce type peut être utilisé pour les _TRV_ qui n'ont pas de `climate` associé o
 > 1. **quel type d'équipement je vais piloter ?** Dans l'ordre voici ce qu'il faut faire :
 >    1. si vous avez une vanne thermostatique (_TRV_) commandable dans Home Assistant via une entité de type ```number``` (par exemple une _Shelly TRV_), choisissez le type `over_valve`. C'est le type le plus direct et qui assure la meilleure régulation,
 >    2. si vous avez un radiateur électrique (avec ou sans fil pilote) et qu'une entité de type ```switch``` permet de l'allumer ou de l'éteindre, alors le type ```over_switch``` est préférable. La régulation sera faite par le Versatile Thermostat en fonction de la température mesuré par votre thermomètre, à l'endroit ou vous l'avez placé,
->    3. dans tous les autres cas, utilisez le mode ```over_climate```. Vous gardez votre entité ```climate``` d'origine et le Versatile Thermostat "ne fait que" piloter le on/off et la température cible de votre thermostat d'origine. La régulation est faite par votre thermostat d'origine dans ce cas. Ce mode est particulièrement adapté aux climatisations réversible tout-en-un dont l'exposition dans Home Assistant se limite à une entité de type ```climate```. Une auto-régulation avancée permet d'atteindre la consigne en forçant la consigne ou un pilotant directement la vanne lorsque c'est possible.
+>    3. dans tous les autres cas, utilisez le mode ```over_climate```. Vous gardez votre entité ```climate``` d'origine et le VTherm "ne fait que" piloter le on/off et la température cible de votre thermostat d'origine. La régulation est faite par votre thermostat d'origine dans ce cas. Ce mode est particulièrement adapté aux climatisations réversible tout-en-un dont l'exposition dans Home Assistant se limite à une entité de type ```climate```. Une auto-régulation avancée permet d'atteindre la consigne en forçant la consigne ou un pilotant directement la vanne lorsque c'est possible.
 > 2. **quelle type de régulation je veux ?** Si l'équipement piloté possède son propre mécanisme de régulation (clim, certaine vanne TRV) et que cette régulation fonctionne bien, optez pour un ```over_climate```. Si l'équipement est de type _TRV_ avec une vanne pilotable sous HA, alors le type `over_climate` avec une auto-régulation `Contrôle direct de la vanne` est le meilleur choix.
 
 # Article en référence
